@@ -28,7 +28,7 @@ public class Main {
                     System.out.print("Senha: ");
                     String senha = sc.nextLine();
 
-                    Usuario.cadastrar(nome, sobrenome, email, senha);
+                    Locadora.cadastrar(nome, sobrenome, email, senha);
                     break;
 
                 case 2:
@@ -42,7 +42,7 @@ public class Main {
                         String loginSenha = sc.nextLine();
 
                         //usuarioLogado vai armazenar o retorno do metodo login(o usuario da lista ou null)
-                        Usuario usuarioLogado = Usuario.login(loginEmail, loginSenha);
+                        Usuario usuarioLogado = Locadora.login(loginEmail, loginSenha);
                         if (usuarioLogado != null) {
                             System.out.println("Login realizado com sucesso!");
                             loginSuccessful = true;
