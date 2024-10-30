@@ -1,7 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
-public class Aluguel extends Filme {
+public class Aluguel {
+    protected Filme filme;
     protected LocalDate dataAluguel;
     protected LocalDate dataExpiracao;
     protected LocalDate dataDevolucao;
@@ -10,13 +11,13 @@ public class Aluguel extends Filme {
     protected double valorTotal;
 
 
-    public Aluguel(String titulo, int ano, String genero, String diretor, double duracao, String descricao, String classificacao, double avaliacaoMedia, double preco) {
-        super(titulo, ano, genero, diretor, duracao, descricao, classificacao, avaliacaoMedia, classificacao, avaliacaoMedia, preco);
+    public Aluguel(Filme filme, int diasAlugados) {
+        this.filme = filme;
         this.dataAluguel = LocalDate.now();
-        this.dataExpiracao = LocalDate.now();
-        this.dataDevolucao = LocalDate.now();
+        this.dataExpiracao = dataAluguel.plusDays(diasAlugados);
         this.diasAlugados = diasAlugados;
-        this.valorTotal = getPreco();
+        this.valorTotal = filme.getPreco() * diasAlugados;
+        this.devolvido = false;
     }
 
 
@@ -35,7 +36,7 @@ public class Aluguel extends Filme {
         String dataDevolucaoStr = (dataDevolucao != null) ? formatoData.format(dataDevolucao) : "Ainda não devolvido";
 
         return "Dados do Aluguel:\n" +
-                "Filme: " + getDescricaoFilme() + "\n" +
+                "Filme: " + filme.getTitulo() + "\n" +
                 "Data do Aluguel: " + dataAluguelStr + "\n" +
                 "Data de Devolução: " + dataDevolucaoStr + "\n" +
                 "Valor do Aluguel: R$" + valorTotal + "\n" +
