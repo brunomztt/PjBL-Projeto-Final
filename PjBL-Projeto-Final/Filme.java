@@ -56,7 +56,11 @@ public class Filme {
         }
     }
 
-    public String getGenero(){return genero;}
+    public String getGenero(){
+        return genero;
+    }
 
-    public double getPreco(){ return preco;}
+    public double getPreco(){
+        return preco;
+    }
 }
